@@ -7,15 +7,10 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.itzik.myimagesapp.Utils.Convert
-import com.itzik.myimagesapp.Utils.TimeUtil
 import com.itzik.myimagesapp.repo.ImagesRepo
-import com.itzik.myimagesapp.repo.entities.ImageEntity
 import com.itzik.myimagesapp.ui.model.Image
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.*
-import kotlin.collections.ArrayList
 
 class ImageViewModel(val app: Application): AndroidViewModel(app) {
 
@@ -33,10 +28,6 @@ class ImageViewModel(val app: Application): AndroidViewModel(app) {
                 val transformImages = it.map { Convert.convertImageEntityToImage(it) } .toList()
                 (imageList as MutableLiveData).postValue(transformImages)
             }
-
-
-
-
         }
     }
 
