@@ -28,10 +28,6 @@ class ImageViewModel(val app: Application): AndroidViewModel(app) {
     fun fetchImageList() {
         viewModelScope.launch(Dispatchers.IO) {
             Log.d("itzik-ImageViewModel", "fetch image list")
-            val test = listOf( ImageEntity(TimeUtil.getTime(), TimeUtil.getCurrentDate(), "urlxx") ,
-                ImageEntity(TimeUtil.getTime(), TimeUtil.getCurrentDate(), "urlxx"))
-            Log.d("itzik-ImageViewModel", "test image list = ${test}")
-            ImagesRepo.addImages(test)
             ImagesRepo.getAllImages().collect{
                 Log.d("itzik-ImageViewModel", "collect image list = ${it}")
                 val transformImages = it.map { Convert.convertImageEntityToImage(it) } .toList()
